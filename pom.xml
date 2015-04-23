@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.abstratt</groupId>
 	<artifactId>cloudfier-maven-plugin</artifactId>
-	<version>0.10.0-SNAPSHOT</version>
+	<version>0.10.1-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -26,11 +26,11 @@
 	
 	<distributionManagement>
 	   <snapshotRepository>
-	       <id>sonatype-snapshots</id>
+	       <id>sonatype</id>
 	       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
 	   </snapshotRepository>
 	   <repository>
-           <id>sonatype-staging</id>
+           <id>sonatype</id>
            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
        </repository>
 	</distributionManagement>
