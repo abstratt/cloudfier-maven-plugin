@@ -1,5 +1,8 @@
 # cloudfier-maven-plugin
 
+cloudfier-maven-plugin is a Maven plug-in that exposes the Cloudfier functionality to Maven-based builds.
+
+So far, the only exposed functionality is code generation.
 
 ### Generating code from a project deployed at develop.cloudier.com
 
