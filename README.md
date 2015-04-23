@@ -71,9 +71,10 @@ PLATFORM: jee
 [INFO] Finished at: Thu Apr 23 18:16:26 BRT 2015
 [INFO] Final Memory: 11M/490M
 [INFO] ------------------------------------------------------------------------
-
 ```
-You can then build and test the generated code (assuming you have the required Postgres database created):
+### Building the generated code
+
+You need to have Maven 3, Java 8 and Postgres 9 installed. In order to run the tests, you also need a database named "cloudfier" accessible to a user named "cloudfier" with no password. You can build and test the generated code:
 
 ```
 mvn clean install -f /tmp/test8/pom.xml
