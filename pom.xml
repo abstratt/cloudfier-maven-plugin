@@ -18,7 +18,12 @@
 			<url>https://www.eclipse.org/legal/epl-v10.html</url>
 		</license>
 	</licenses>
-
+	
+	<organization>
+	   <name>Abstratt Technologies and contributors.</name>
+	   <url>http://github.com/abstratt</url>
+	</organization>
+	
 	<dependencies>
 		<dependency>
 			<groupId>commons-httpclient</groupId>
