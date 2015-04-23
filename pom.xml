@@ -23,6 +23,17 @@
 		<name>Abstratt Technologies and contributors.</name>
 		<url>http://github.com/abstratt</url>
 	</organization>
+	
+	<distributionManagement>
+	   <snapshotRepository>
+	       <id>sonatype-snapshots</id>
+	       <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+	   </snapshotRepository>
+	   <repository>
+           <id>sonatype-staging</id>
+           <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+       </repository>
+	</distributionManagement>
 
 	<developers>
 		<developer>
