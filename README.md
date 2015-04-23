@@ -4,7 +4,20 @@ cloudfier-maven-plugin is a Maven plug-in that exposes the Cloudfier functionali
 
 So far, the only exposed functionality is code generation.
 
-### Generating code from a project deployed at develop.cloudier.com
+#### Generating code from a project deployed at develop.cloudier.com
+
+Parameters:
+- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
+- kirra.project.name - the name of the project (defaults to "timetracker")
+- kirra.project.owner - the owner of the project (defaults to "test")
+- kirra.generator.override - whether to silently override existing files (defaults to false)
+- kirra.project.basepath - the project base path (defaults to cloudfier-examples)
+- kirra.target.platform - the target platform (available: "jse" and "jee", defaults to "jse")
+- kirra.target.dir - the base directory where to generate the code, defaults to the current dir
+- 
+The Cloudfier project must have been deployed (using the 'cloudfier full-deploy' command in Cloudfier).
+
+Example:
 
 ```
 mvn com.abstratt:cloudfier-maven-plugin:generate \
@@ -75,7 +88,7 @@ PLATFORM: jee
 [INFO] Final Memory: 11M/490M
 [INFO] ------------------------------------------------------------------------
 ```
-### Building the generated code
+#### Building the generated code
 
 You need to have Maven 3, Java 8 and Postgres 9 installed. In order to run the tests, you also need a database named "cloudfier" accessible to a user named "cloudfier" with no password. You can build and test the generated code:
 
