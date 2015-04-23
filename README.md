@@ -73,3 +73,8 @@ PLATFORM: jee
 [INFO] ------------------------------------------------------------------------
 
 ```
+You can then build and test the generated code (assuming you have the required Postgres database created):
+
+```
+mvn clean install -f /tmp/test8/pom.xml
+```
