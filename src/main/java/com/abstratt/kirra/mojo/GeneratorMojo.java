@@ -43,6 +43,9 @@ public class GeneratorMojo extends AbstractMojo {
     @Parameter(property="kirra.project.owner", defaultValue="test")
     public String projectOwner;
     
+    /**
+     * Whether files should be generated even in case they already exist in the target path.
+     */
     @Parameter(property="kirra.generator.override", defaultValue="false")
     public Boolean override;
     
@@ -59,10 +62,10 @@ public class GeneratorMojo extends AbstractMojo {
     public String targetPlatform;
     
     /**
-     * The local directory where to generate code into
+     * The local directory where to generate code into.
      */
-    @Parameter(property="kirra.target.root", defaultValue="${user.dir}")
-    public String targetRoot;
+    @Parameter(property="kirra.target.dir", defaultValue="${user.dir}")
+    public String targetDir;
 
     @Override
     public void execute() throws MojoExecutionException {
@@ -74,8 +77,8 @@ public class GeneratorMojo extends AbstractMojo {
         generateRequest.setRequestHeader("Content-Type", "application/zip");
         HttpClient client = new HttpClient();
         byte[] body;
-        this.getLog().debug("Generation destination: " + targetRoot);
-        new File(targetRoot).mkdirs();
+        this.getLog().debug("Generation destination: " + targetDir);
+        new File(targetDir).mkdirs();
         File output = null;
         try {
             int response = client.executeMethod(generateRequest);
@@ -92,7 +95,7 @@ public class GeneratorMojo extends AbstractMojo {
                     InputStream entryContents = zipFile.getInputStream(entry);
                     OutputStream destinationContents = null;
                     try {
-                        File destination = new File(targetRoot, entry.getName());
+                        File destination = new File(targetDir, entry.getName());
                         if (destination.exists() && !override)
                             throw new MojoExecutionException("File or directory already exists at: " + destination + " and overriding was not enabled");
                         getLog().info("Generating at " + destination);
