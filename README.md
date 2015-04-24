@@ -14,6 +14,7 @@ Publishes a local project to a Cloudfier server.
 Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
+- kirra.project.sourcedir - the location where to find source files (defaults to "$basedir/src/main/textuml")
 
 Example:
 
