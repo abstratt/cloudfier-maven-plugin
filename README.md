@@ -1,6 +1,6 @@
 # cloudfier-maven-plugin
 
-cloudfier-maven-plugin is a Maven plug-in that exposes the Cloudfier functionality to Maven-based builds.
+A Maven plug-in that exposes the Cloudfier functionality to Maven-based builds.
 
 The following goals are available:
 - publish
@@ -11,9 +11,17 @@ The following goals are available:
 
 Publishes a local project to a Cloudfier server.
 
+Parameters:
+- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
+- kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
+
 #### cloudfier-maven-plugin:test
 
 Runs the test suite for a project currently deployed on a Cloudfier server.
+
+Parameters:
+- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
+- kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 
 #### cloudfier-maven-plugin:generate
 
@@ -21,10 +29,8 @@ Generates code from a project currently deployed at a Cloudfier server.
 
 Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
-- kirra.project.name - the name of the project (defaults to "timetracker")
-- kirra.project.owner - the owner of the project (defaults to "test")
+- kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 - kirra.generator.override - whether to silently override existing files (defaults to false)
-- kirra.project.basepath - the project base path (defaults to cloudfier-examples)
 - kirra.target.platform - the target platform (available: "jse" and "jee", defaults to "jse")
 - kirra.target.dir - the base directory where to generate the code, defaults to the current dir
 - 
