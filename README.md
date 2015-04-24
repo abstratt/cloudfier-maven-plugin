@@ -15,6 +15,12 @@ Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 
+Example:
+
+```
+mvn com.abstratt:cloudfier-maven-plugin:publish
+```
+
 #### cloudfier-maven-plugin:test
 
 Runs the test suite for a project currently deployed on a Cloudfier server.
@@ -22,6 +28,11 @@ Runs the test suite for a project currently deployed on a Cloudfier server.
 Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
+
+```
+mvn com.abstratt:cloudfier-maven-plugin:test
+```
+
 
 #### cloudfier-maven-plugin:generate
 
@@ -33,7 +44,7 @@ Parameters:
 - kirra.generator.override - whether to silently override existing files (defaults to false)
 - kirra.target.platform - the target platform (available: "jse" and "jee", defaults to "jse")
 - kirra.target.dir - the base directory where to generate the code, defaults to the current dir
-- 
+
 The Cloudfier project must have been deployed (using the 'cloudfier full-deploy' command in Cloudfier).
 
 Example:
@@ -42,9 +53,6 @@ Example:
 mvn com.abstratt:cloudfier-maven-plugin:generate \
     -Dkirra.target.dir=/tmp/test8 \
     -Dkirra.target.platform=jee \
-    -Dkirra.project.name=timetracker \
-    -Dkirra.project.basepath=cloudfier-examples \    
-    -Dkirra.project.owner=demo     
 ```
 
 which on my machine generates:
