@@ -36,7 +36,7 @@ mvn com.abstratt:cloudfier-maven-plugin:test
 
 #### cloudfier-maven-plugin:generate
 
-Generates code from a project currently deployed at a Cloudfier server.
+Generates code locally from a project currently deployed at a Cloudfier server.
 
 Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
