@@ -2,9 +2,22 @@
 
 cloudfier-maven-plugin is a Maven plug-in that exposes the Cloudfier functionality to Maven-based builds.
 
-So far, the only exposed functionality is code generation.
+The following goals are available:
+- publish
+- test
+- generate
 
-#### Generating code from a project deployed at develop.cloudier.com
+#### cloudfier-maven-plugin:publish
+
+Publishes a local project to a Cloudfier server.
+
+#### cloudfier-maven-plugin:test
+
+Runs the test suite for a project currently deployed on a Cloudfier server.
+
+#### cloudfier-maven-plugin:generate
+
+Generates code from a project currently deployed at a Cloudfier server.
 
 Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
