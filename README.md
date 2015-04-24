@@ -1,6 +1,6 @@
 # cloudfier-maven-plugin
 
-A Maven plug-in that exposes the Cloudfier functionality to Maven-based builds.
+A Maven plug-in that exposes Cloudfier's functionality to Maven-based builds.
 
 The following goals are available:
 - publish
