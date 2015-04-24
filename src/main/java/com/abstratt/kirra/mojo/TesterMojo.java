@@ -25,22 +25,24 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 public class TesterMojo extends AbstractCloudfierMojo {
     @Override
     public void execute() throws MojoExecutionException {
-        String dataUri = serverBaseUri + "/services/api/" + projectSlug + "/data";
-        String testUri = serverBaseUri + "/services/api/" + projectSlug + "/tests";
+        String dataUri = serverBaseUri + "/api/" + getOneTimeProjectSlug() + "/data";
+        String testUri = serverBaseUri + "/api/" + getOneTimeProjectSlug() + "/tests";
         HttpClient client = new HttpClient();
         PostMethod dataRequest = new PostMethod(dataUri);
         PostMethod testRequest = new PostMethod(testUri);
         String responseBody = "";
         try {
+            getLog().debug("Redeploying database at " + dataUri);
             int response = client.executeMethod(dataRequest);
             if (response != 200)
-                throw new MojoExecutionException("Unexpected status deploying the database: " + response);
+                throw new MojoExecutionException("Unexpected status deploying the database: " + response + "\n" + dataRequest.getResponseBodyAsString());
+            getLog().debug("Running tests at " + testUri);
             response = client.executeMethod(testRequest);
             if (response != 200)
-                throw new MojoExecutionException("Unexpected status running tests: " + response);
+                throw new MojoExecutionException("Unexpected status running tests: " + response + "\n" + testRequest.getResponseBodyAsString());
             responseBody = testRequest.getResponseBodyAsString();
-        } catch (IOException e1) {
-            getLog().error(e1);
+        } catch (IOException e) {
+            getLog().error(e);
             return;
         }
         try {

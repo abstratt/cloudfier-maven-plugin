@@ -29,7 +29,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 /**
  * This mojo can publish a project into a Cloudfier server.
  */
-@Mojo(name="publish", requiresProject=true, requiresOnline=true, threadSafe=true, defaultPhase=LifecyclePhase.COMPILE)
+@Mojo(name="publish", requiresProject=false, requiresOnline=true, threadSafe=true, defaultPhase=LifecyclePhase.COMPILE)
 public class PublisherMojo extends AbstractCloudfierMojo {
 
     /**
@@ -38,15 +38,9 @@ public class PublisherMojo extends AbstractCloudfierMojo {
     @Parameter(property="kirra.project.sourcedir", defaultValue="${basedir}/src/main/textuml/")
     public String projectSourceDir;
     
-    /**
-     * The name of the project to publish into. 
-     */
-    @Parameter(property="kirra.project.slug", defaultValue="${project.groupId}-${project.artifactId}-${project.version}")
-    public String projectSlug;
-    
     @Override
     public void execute() throws MojoExecutionException {
-        String projectBaseUri = serverBaseUri + "/services/publisher/" + projectSlug + "/";
+        String projectBaseUri = serverBaseUri + "/publisher/" + getOneTimeProjectSlug() + "/";
         HttpClient client = new HttpClient();
         File output = null;
         HttpMethod uploadRequest = null;
@@ -64,6 +58,7 @@ public class PublisherMojo extends AbstractCloudfierMojo {
             sources.keySet().forEach(path -> getLog().info("Publishing " + path));
             sourceFiles.close();
             uploadRequest = buildMultipartRequest(URI.create(projectBaseUri), sources);
+            getLog().debug("Publishing project at: " + projectBaseUri);
             client.executeMethod(uploadRequest);
             String responseText = uploadRequest.getResponseBodyAsString();
             getLog().debug(responseText);

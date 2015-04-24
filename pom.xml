@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.abstratt</groupId>
 	<artifactId>cloudfier-maven-plugin</artifactId>
-	<version>0.11.10-SNAPSHOT</version>
+	<version>0.12.0-SNAPSHOT</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -111,6 +111,7 @@
 	</build>
 	<profiles>
 		<profile>
+			<id>deploy</id>
 			<build>
 				<plugins>
 					<plugin>

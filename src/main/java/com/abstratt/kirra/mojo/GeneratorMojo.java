@@ -42,7 +42,7 @@ public class GeneratorMojo extends AbstractCloudfierMojo {
 
     @Override
     public void execute() throws MojoExecutionException {
-        String generationUri = serverBaseUri + "/services/generator/" + projectSlug + "/platform/" + targetPlatform;
+        String generationUri = serverBaseUri + "/generator/" + getOneTimeProjectSlug() + "/platform/" + targetPlatform;
         this.getLog().debug("Generation URI: " + generationUri);
         GetMethod generateRequest = new GetMethod(generationUri);
         generateRequest.setRequestHeader("Content-Type", "application/zip");
