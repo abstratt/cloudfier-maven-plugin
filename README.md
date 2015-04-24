@@ -9,7 +9,7 @@ The following goals are available:
 
 #### cloudfier-maven-plugin:publish
 
-Publishes a local project to a Cloudfier server.
+Publishes a local project to a Cloudfier server, validating the application, and making it available for model-based testing and code generation.
 
 Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
@@ -24,7 +24,7 @@ mvn com.abstratt:cloudfier-maven-plugin:publish
 
 #### cloudfier-maven-plugin:test
 
-Runs the test suite for a project currently deployed on a Cloudfier server.
+Runs the test suite for a project currently deployed on a Cloudfier server. Does not re-deploy the application, but does re-deploy the data set supporting the Cloudfier application. 
 
 Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
@@ -33,7 +33,6 @@ Parameters:
 ```
 mvn com.abstratt:cloudfier-maven-plugin:test
 ```
-
 
 #### cloudfier-maven-plugin:generate
 
