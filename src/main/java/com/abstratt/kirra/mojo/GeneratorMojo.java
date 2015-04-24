@@ -69,7 +69,6 @@ public class GeneratorMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException {
-        System.out.println("PLATFORM: " + targetPlatform);
         String projectBaseUri = serverBaseUri + "/services/generator/" + projectOwner + "-" + projectBase.replace('/', '-') + "-" + projectName;
         String generationUri = projectBaseUri + "/platform/" + targetPlatform;
         this.getLog().debug("Generation URI: " + generationUri);
