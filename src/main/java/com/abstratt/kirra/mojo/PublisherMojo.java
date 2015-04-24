@@ -2,22 +2,15 @@ package com.abstratt.kirra.mojo;
 
 import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
 import java.net.URI;
-import java.nio.file.FileVisitOption;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
-import java.util.Enumeration;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
 
 import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.HttpException;
@@ -28,8 +21,6 @@ import org.apache.commons.httpclient.methods.multipart.FilePart;
 import org.apache.commons.httpclient.methods.multipart.MultipartRequestEntity;
 import org.apache.commons.httpclient.methods.multipart.Part;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.IOUtils;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
@@ -39,14 +30,8 @@ import org.apache.maven.plugins.annotations.Parameter;
  * This mojo can publish a project into a Cloudfier server.
  */
 @Mojo(name="publish", requiresProject=true, requiresOnline=true, threadSafe=true, defaultPhase=LifecyclePhase.COMPILE)
-public class PublisherMojo extends AbstractMojo {
+public class PublisherMojo extends AbstractCloudfierMojo {
 
-    /**
-     * The URI of the Cloudfier instance. 
-     */
-    @Parameter(property="kirra.uri", defaultValue="http://develop.cloudfier.com")
-    public String serverBaseUri;
-    
     /**
      * The project source dir. 
      */
@@ -61,7 +46,6 @@ public class PublisherMojo extends AbstractMojo {
     
     @Override
     public void execute() throws MojoExecutionException {
-        System.out.println(getPluginContext());
         String projectBaseUri = serverBaseUri + "/services/publisher/" + projectSlug + "/";
         HttpClient client = new HttpClient();
         File output = null;

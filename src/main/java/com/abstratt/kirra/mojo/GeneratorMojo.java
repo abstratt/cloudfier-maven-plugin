@@ -12,48 +12,21 @@ import org.apache.commons.httpclient.HttpClient;
 import org.apache.commons.httpclient.methods.GetMethod;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.IOUtils;
-import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugin.MojoExecutionException;
-import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
 /**
- * This mojo can generate code from a public Cloudfier project.
+ * This mojo can generate code from a previously deployed Cloudfier project.
  */
 @Mojo(name="generate", requiresProject=false, requiresOnline=true, threadSafe=true, defaultPhase=LifecyclePhase.GENERATE_SOURCES)
-public class GeneratorMojo extends AbstractMojo {
-
-    /**
-     * The URI of the Cloudfier instance. 
-     */
-    @Parameter(property="kirra.uri", defaultValue="http://develop.cloudfier.com")
-    public String serverBaseUri;
-    
-    /**
-     * The name of the project to generate from. 
-     */
-    @Parameter(property="kirra.project.name", defaultValue="timetracker")
-    public String projectName;
-    
-    /**
-     * The owner of the project to generate from. 
-     */
-    @Parameter(property="kirra.project.owner", defaultValue="test")
-    public String projectOwner;
-    
+public class GeneratorMojo extends AbstractCloudfierMojo {
     /**
      * Whether files should be generated even in case they already exist in the target path.
      */
     @Parameter(property="kirra.generator.override", defaultValue="false")
     public Boolean override;
-    
-    /**
-     * The base path of the project to generate from. 
-     */
-    @Parameter(property="kirra.project.basepath", defaultValue="cloudfier-examples")
-    public String projectBase;
     
     /**
      * The target platform to generate for. 
@@ -69,8 +42,7 @@ public class GeneratorMojo extends AbstractMojo {
 
     @Override
     public void execute() throws MojoExecutionException {
-        String projectBaseUri = serverBaseUri + "/services/generator/" + projectOwner + "-" + projectBase.replace('/', '-') + "-" + projectName;
-        String generationUri = projectBaseUri + "/platform/" + targetPlatform;
+        String generationUri = serverBaseUri + "/services/generator/" + projectSlug + "/platform/" + targetPlatform;
         this.getLog().debug("Generation URI: " + generationUri);
         GetMethod generateRequest = new GetMethod(generationUri);
         generateRequest.setRequestHeader("Content-Type", "application/zip");
