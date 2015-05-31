@@ -3,9 +3,9 @@
 A Maven plug-in that exposes Cloudfier's functionality to Maven-based builds (for more on Cloudfier, see the [service website](http://cloudfier.com) and its [git repository](http://github.com/abstratt/cloudfier)).
 
 The following goals are available:
-- publish
-- test
-- generate
+- publish - publishes a local project to a Cloudfier server
+- test - runs the test suite for a project currently deployed on a Cloudfier server
+- generate - generates code locally from a project currently deployed at a Cloudfier server
 
 #### cloudfier-maven-plugin:publish
 
