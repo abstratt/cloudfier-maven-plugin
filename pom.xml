@@ -2,7 +2,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.abstratt</groupId>
 	<artifactId>cloudfier-maven-plugin</artifactId>
-	<version>0.12.5</version>
+	<version>0.12.6</version>
 	<packaging>maven-plugin</packaging>
 
 	<name>${project.groupId}:${project.artifactId}</name>
@@ -112,7 +112,9 @@
                     <configuration>
                         <noDeploy>true</noDeploy>
                         <enableSshAgent>true</enableSshAgent>
-                        <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
+                        <flowInitContext>
+                            <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
+                        </flowInitContext>
                     </configuration>                    
                 </plugin>	
 			</plugins>
