@@ -46,9 +46,9 @@
 	</developers>
 
 	<scm>
-		<connection>scm:git:git@github.com:abstratt/cloudfier-maven-plugin.git</connection>
-		<developerConnection>scm:git:git@github.com:abstratt/cloudfier-maven-plugin.git</developerConnection>
-		<url>git@github.com:abstratt/cloudfier-maven-plugin.git</url>
+		<connection>scm:git:github.com:abstratt/cloudfier-maven-plugin.git</connection>
+		<developerConnection>scm:git:github.com:abstratt/cloudfier-maven-plugin.git</developerConnection>
+		<url>github.com:abstratt/cloudfier-maven-plugin.git</url>
 	</scm>
 
 	<dependencies>
@@ -105,6 +105,15 @@
 						</execution>
 					</executions>
 				</plugin>
+                <plugin>
+                    <groupId>external.atlassian.jgitflow</groupId>
+                    <artifactId>jgitflow-maven-plugin</artifactId>
+                    <version>1.0-m5.1</version>
+                    <configuration>
+                        <noDeploy>true</noDeploy>
+                        <enableSshAgent>true</enableSshAgent>
+                    </configuration>                    
+                </plugin>	
 			</plugins>
 		</pluginManagement>
 	</build>
