@@ -126,9 +126,5 @@ mvn clean install -f /tmp/test8/pom.xml
 #### Releasing
 
 ```
-mvn jgitflow:release-start -B
-git push --all
-mvn jgitflow:release-finish -DnoDeploy=true
-git push --all --follow-tags
-git push origin :release/<version>
+./release.sh
 ```
