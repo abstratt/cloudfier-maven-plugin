@@ -122,3 +122,13 @@ You need to have Maven 3, Java 8 and Postgres 9 installed. In order to run the t
 ```
 mvn clean install -f /tmp/test8/pom.xml
 ```
+
+#### Releasing
+
+```
+mvn jgitflow:release-start -B
+git push --all
+mvn jgitflow:release-finish -DnoDeploy=true
+git push --all --follow-tags
+git push origin :release/<version>
+```
