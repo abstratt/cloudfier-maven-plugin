@@ -112,6 +112,7 @@
                     <configuration>
                         <noDeploy>true</noDeploy>
                         <enableSshAgent>true</enableSshAgent>
+                        <versionTagPrefix>${project.artifactId}-</versionTagPrefix>
                     </configuration>                    
                 </plugin>	
 			</plugins>
