@@ -1,18 +1,18 @@
 # cloudfier-maven-plugin
 
-A Maven plug-in that exposes Cloudfier's functionality to Maven-based builds.
+A Maven plug-in that exposes Cloudfier's functionality to Maven-based builds (for more on Cloudfier, see the [service website](http://cloudfier.com) and its [git repository](http://github.com/abstratt/cloudfier)).
 
 The following goals are available:
-- publish
-- test
-- generate
+- **publish** - publishes a local project to a Cloudfier server
+- **test** - runs the test suite for a project currently deployed on a Cloudfier server
+- **generate** - generates code locally from a project currently deployed at a Cloudfier server
 
 #### cloudfier-maven-plugin:publish
 
 Publishes a local project to a Cloudfier server, validating the application, and making it available for model-based testing and code generation.
 
 Parameters:
-- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
+- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com/services")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 - kirra.project.sourcedir - the location where to find source files (defaults to "$basedir/src/main/textuml")
 
@@ -27,7 +27,7 @@ mvn com.abstratt:cloudfier-maven-plugin:publish
 Runs the test suite for a project currently deployed on a Cloudfier server. Does not re-deploy the application, but does re-deploy the data set supporting the Cloudfier application. 
 
 Parameters:
-- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
+- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com/services")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 
 ```
@@ -39,7 +39,7 @@ mvn com.abstratt:cloudfier-maven-plugin:test
 Generates code locally from a project currently deployed at a Cloudfier server.
 
 Parameters:
-- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com")
+- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com/services")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 - kirra.generator.override - whether to silently override existing files (defaults to false)
 - kirra.target.platform - the target platform (available: "jse" and "jee", defaults to "jse")
