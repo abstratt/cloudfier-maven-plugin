@@ -53,6 +53,7 @@ Example:
 mvn com.abstratt:cloudfier-maven-plugin:generate \
     -Dkirra.target.dir=/tmp/test8 \
     -Dkirra.target.platform=jee \
+    -Dkirra.project.slug=demo-cloudfier-examples-expenses
 ```
 
 which on my machine generates:
