@@ -6,6 +6,7 @@ import java.net.URI;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -50,7 +51,8 @@ public class PublisherMojo extends AbstractCloudfierMojo {
                 throw new MojoExecutionException("No source directory at: "+ sourceRootDir);
             getLog().debug("Source root directory: " + sourceRootDir);
             Path sourceRootPath = sourceRootDir.getAbsoluteFile().toPath();
-            Stream<Path> sourceFiles = Files.find(sourceRootPath, Integer.MAX_VALUE, (path, attributes) -> path.getFileName().toString().endsWith(".tuml") || path.getFileName().toString().equals("mdd.properties"));
+            List<String> toMatch = Arrays.asList(".tuml", "mdd.properties", "data.json");
+            Stream<Path> sourceFiles = Files.find(sourceRootPath, Integer.MAX_VALUE, (path, attributes) -> toMatch.stream().anyMatch(suffix -> path.getFileName().toString().endsWith(suffix)));
             Map<Path, byte[]> sources = sourceFiles.collect(Collectors.toMap(
                 p -> sourceRootPath.relativize(p), 
                 p -> readPath(p)
