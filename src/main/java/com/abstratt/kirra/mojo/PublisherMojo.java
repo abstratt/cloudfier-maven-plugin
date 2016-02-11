@@ -42,10 +42,10 @@ public class PublisherMojo extends AbstractCloudfierMojo {
     @Override
     public void execute() throws MojoExecutionException {
         String projectBaseUri = serverBaseUri + "/publisher/" + getOneTimeProjectSlug() + "/";
-        HttpClient client = new HttpClient();
         File output = null;
         HttpMethod uploadRequest = null;
         try {
+        	HttpClient client = buildClient();
             File sourceRootDir = new File(projectSourceDir);
             if (!sourceRootDir.isDirectory())
                 throw new MojoExecutionException("No source directory at: "+ sourceRootDir);
@@ -72,6 +72,7 @@ public class PublisherMojo extends AbstractCloudfierMojo {
             FileUtils.deleteQuietly(output);
         }
     }
+
     
     private byte[] readPath(Path p) {
         try {

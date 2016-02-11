@@ -1,7 +1,11 @@
 package com.abstratt.kirra.mojo;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.UUID;
 
+import org.apache.commons.httpclient.HostConfiguration;
+import org.apache.commons.httpclient.HttpClient;
 import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.Parameter;
 
@@ -24,4 +28,13 @@ public abstract class AbstractCloudfierMojo extends AbstractMojo {
     public String getOneTimeProjectSlug() {
         return "@temp-"+ projectSlug + "-" + uniqueVmId;
     }
+    
+
+	protected HttpClient buildClient() throws UnknownHostException {
+		HttpClient client = new HttpClient();
+        HostConfiguration hostConfiguration = new HostConfiguration();
+        hostConfiguration.setLocalAddress(InetAddress.getLocalHost());
+		client.setHostConfiguration(hostConfiguration);
+		return client;
+	}
 }
