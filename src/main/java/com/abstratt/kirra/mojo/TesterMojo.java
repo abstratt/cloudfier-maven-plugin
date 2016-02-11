@@ -27,11 +27,11 @@ public class TesterMojo extends AbstractCloudfierMojo {
     public void execute() throws MojoExecutionException {
         String dataUri = serverBaseUri + "/api/" + getOneTimeProjectSlug() + "/data";
         String testUri = serverBaseUri + "/api/" + getOneTimeProjectSlug() + "/tests";
-        HttpClient client = new HttpClient();
         PostMethod dataRequest = new PostMethod(dataUri);
         PostMethod testRequest = new PostMethod(testUri);
         String responseBody = "";
         try {
+        	HttpClient client = buildClient();
             getLog().debug("Redeploying database at " + dataUri);
             int response = client.executeMethod(dataRequest);
             if (response != 200)

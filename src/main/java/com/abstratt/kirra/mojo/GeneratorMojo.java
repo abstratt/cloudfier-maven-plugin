@@ -46,12 +46,12 @@ public class GeneratorMojo extends AbstractCloudfierMojo {
         this.getLog().debug("Generation URI: " + generationUri);
         GetMethod generateRequest = new GetMethod(generationUri);
         generateRequest.setRequestHeader("Content-Type", "application/zip");
-        HttpClient client = new HttpClient();
         byte[] body;
         this.getLog().debug("Generation destination: " + targetDir);
         new File(targetDir).mkdirs();
         File output = null;
         try {
+        	HttpClient client = buildClient();
             int response = client.executeMethod(generateRequest);
             if (response != 200)
                 throw new MojoExecutionException("Unexpected status: " + response);
