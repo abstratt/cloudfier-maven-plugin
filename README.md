@@ -118,7 +118,7 @@ PLATFORM: jee
 ```
 #### Building the generated code
 
-You need to have Maven 3, Java 8 and Postgres 9 installed. In order to run the tests, you also need a database named "cloudfier" accessible to a user named "cloudfier" with no password. You can build and test the generated code:
+You need to have Maven 3 and Java 8 installed. You can build and test the generated code with:
 
 ```
 mvn clean install -f /tmp/test8/pom.xml
