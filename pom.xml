@@ -88,6 +88,10 @@
 		<pluginManagement>
 			<plugins>
 				<plugin>
+					<artifactId>maven-source-plugin</artifactId>
+					<version>3.2.0</version>
+				</plugin>
+				<plugin>
 					<artifactId>maven-compiler-plugin</artifactId>
 					<version>3.3</version>
 					<configuration>
@@ -110,6 +114,9 @@
 				<plugin>
 					<artifactId>maven-plugin-plugin</artifactId>
 					<version>3.4</version>
+					<configuration>
+			        	<skipErrorNoDescriptorsFound>true</skipErrorNoDescriptorsFound>
+					</configuration>
 					<executions>
 						<execution>
 							<id>default-descriptor</id>
