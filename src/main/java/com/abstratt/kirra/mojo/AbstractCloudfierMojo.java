@@ -15,7 +15,7 @@ public abstract class AbstractCloudfierMojo extends AbstractMojo {
     /**
      * The URI of the Cloudfier instance. 
      */
-    @Parameter(property="kirra.uri", defaultValue="http://develop.cloudfier.com/services")
+    @Parameter(property="kirra.uri", defaultValue="https://develop.cloudfier.com/services")
     public String serverBaseUri;
     
     /**
