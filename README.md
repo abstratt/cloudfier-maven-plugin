@@ -28,7 +28,7 @@ mvn com.abstratt:cloudfier-maven-plugin:publish
 Runs the test suite for a project currently deployed on a Cloudfier server. Does not re-deploy the application, but does re-deploy the data set supporting the Cloudfier application. 
 
 Parameters:
-- kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com/services")
+- kirra.uri - the URI of the Cloudfier server (defaults to "https://develop.cloudfier.com/services")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 
 ```
@@ -43,7 +43,7 @@ Parameters:
 - kirra.uri - the URI of the Cloudfier server (defaults to "http://develop.cloudfier.com/services")
 - kirra.project.slug - the unique identifier for a project (defaults to "${project.groupId}-${project.artifactId}-${project.version}")
 - kirra.generator.override - whether to silently override existing files (defaults to false)
-- kirra.target.platform - the target platform (available: "jse" and "jee", defaults to "jse")
+- kirra.target.platform - the target platform (available: "jse", "jee" and "doc", defaults to "doc")
 - kirra.target.dir - the base directory where to generate the code, defaults to the current dir
 
 The Cloudfier project must have been deployed (using the 'cloudfier full-deploy' command in Cloudfier).
@@ -117,7 +117,7 @@ PLATFORM: jee
 [INFO] Final Memory: 11M/490M
 [INFO] ------------------------------------------------------------------------
 ```
-#### Building the generated code
+#### Building the generated code (jee and jse)
 
 You need to have Maven 3 and Java 8 installed. You can build and test the generated code with:
 
@@ -125,7 +125,7 @@ You need to have Maven 3 and Java 8 installed. You can build and test the genera
 mvn clean install -f /tmp/test8/pom.xml
 ```
 
-#### Releasing
+#### Releasing this plug-in
 
 ```
 ./release.sh
