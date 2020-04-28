@@ -31,7 +31,7 @@ public class GeneratorMojo extends AbstractCloudfierMojo {
     /**
      * The target platform to generate for. 
      */
-    @Parameter(property="kirra.target.platform", defaultValue="jse")
+    @Parameter(property="kirra.target.platform", defaultValue="doc")
     public String targetPlatform;
     
     /**
