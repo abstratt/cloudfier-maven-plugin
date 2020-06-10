@@ -45,7 +45,7 @@ public class GeneratorMojo extends AbstractCloudfierMojo {
         String generationUri = serverBaseUri + "/generator/" + getOneTimeProjectSlug() + "/platform/" + targetPlatform;
         this.getLog().debug("Generation URI: " + generationUri);
         GetMethod generateRequest = new GetMethod(generationUri);
-        generateRequest.setRequestHeader("Content-Type", "application/zip");
+        generateRequest.setRequestHeader("Accept", "application/zip");
         byte[] body;
         this.getLog().debug("Generation destination: " + targetDir);
         new File(targetDir).mkdirs();
